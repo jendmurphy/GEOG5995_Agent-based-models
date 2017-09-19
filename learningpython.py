@@ -51,3 +51,13 @@ print(answer) #and print the answer!
 def add3(num, num2):
   a = num + num2
 print(add(1,2))  
+
+
+#PUtting a line break in requires an ESCAPE character
+print("This is is all " + "one line. \n" + "This is a second")
+
+a = "This is all "
+b = "one line."
+c = "\nThis is a second."
+
+print(a, b, c)
