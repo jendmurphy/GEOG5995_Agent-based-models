@@ -6,6 +6,8 @@ Created on Tue Sep 19 08:55:32 2017
 
 AND NOW LETS MAKE SOME CHANGES!  Whoopity whoop.
 """
+#shits and giggles
+
 
 #First program in Python
 message = "hello world"
