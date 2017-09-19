@@ -4,6 +4,8 @@
 Created on Tue Sep 19 10:24:31 2017
 SHRINKING CODE:  AGENT BASED MODELLING PRACTICAL
 @author:Jen Murphy
+
+Make some changes!
 """
 # import necessary packages and libraries
 import random
