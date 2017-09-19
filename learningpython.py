@@ -2,7 +2,7 @@
 """
 Created on Tue Sep 19 08:55:32 2017
 
-@author: gyjdm
+@author: Jen Murphy
 
 AND NOW LETS MAKE SOME CHANGES!  Whoopity whoop.
 """
