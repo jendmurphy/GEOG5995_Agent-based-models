@@ -1,49 +1,55 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
 
-This is a temporary script file.
-"""
 # -*- coding: utf-8 -*-
 """
 Created on Tue Sep 19 10:24:31 2017
 SHRINKING CODE:  AGENT BASED MODELLING PRACTICAL
 @author:Jen Murphy
-
 """
-# import random
+# import necessary packages and libraries
 import random
 import operator
 import matplotlib.pyplot
+
 #Add a variable to control the number of agents
 num_of_agents = 10
 
-#Create a list for agents
-agents = []
+#Create a list for agents_j
+agents_j = []
 
 #Use a for loop to create a number of agents within the list agents
-for i in range(num_of_agents):
-    agents.append([random.randint(0,100),random.randint(0,100)])
+for j in range(num_of_agents):
+    agents_j.append([random.randint(0,100),random.randint(0,100)])
 
-print (agents)
+print (agents_j)
 
-# Now to optimise the random movement code
+#Plot the agents with integer (0,100) range coordinates
+matplotlib.pyplot.xlim(0, 100)
+matplotlib.pyplot.ylim(0, 100)
+for j in range (num_of_agents):
+    matplotlib.pyplot.scatter(agents_j[j][0],agents_j[j][1])
+matplotlib.pyplot.show()
+
+# Now to optimise the random movement code and set up another set of agents.
 # To get x coordinates for agent i
 for i in range(num_of_agents):
-   if random.random() < 0.5:
-       agents[i][0] += 1
-       else :
-           agents[i][0] -= 1
-#  To get y coordinates for agent i
+    agents [i][0] = random.random()
+    agents [i][1] = random.random()
+
 for i in range(num_of_agents):
-    if random.random() < 0.5:
-        agents[i][1] += 1
-        else:
-            agents[i][1] -= 1
+    if agents[i][0] < 0.5:
+       agents[i][0] += 1
+    else :
+       agents[i][0] -= 1
+
+for i in range(num_of_agents):
+    if agents[i][1] < 0.5:
+       agents[i][1] += 1
+    else :
+       agents[i][1] -= 1
 
 #PLot the agents
-matplotlib.pyplot.xlim(0, 99)
-matplotlib.pyplot.ylim(0, 99)
+matplotlib.pyplot.xlim(-1, 2)
+matplotlib.pyplot.ylim(-1, 2)
 for i in range (num_of_agents):
     matplotlib.pyplot.scatter(agents[i][0],agents[i][1])
 matplotlib.pyplot.show()
@@ -51,9 +57,8 @@ matplotlib.pyplot.show()
 
 
 
-
 """
-Last practical's code
+Last practical's code  commented out 
 
 #AGENT 0
 x0 = random.randint(0,100)
