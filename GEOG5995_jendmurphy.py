@@ -4,7 +4,6 @@ Created on Tue Sep 19 10:24:31 2017
 AGENT BASED MODELLING PRACTICAL
 @author:Jen Murphy
 """
-
 import random
 import operator
 import matplotlib.pyplot
@@ -56,19 +55,14 @@ for j in range(num_of_agents):
         distance_between(agents[j],agents[i])    
         distances.append (distance_between(agents[j],agents[i]))
 
-end = getTimeMS()
-print("time = " + str(end - start))
-
-
-print (distances)        
-len(distances)
-
 matplotlib.pyplot.xlim(0, 99)
 matplotlib.pyplot.ylim(0, 99)
 for i in range(num_of_agents):
      matplotlib.pyplot.scatter(agents[i][0],agents[i][1])
 matplotlib.pyplot.show() 
 
+end = getTimeMS()
+print("time = " + str(end - start))
 
 """The code here compares all agents with all other agents and constructs a list of lists distances
 
