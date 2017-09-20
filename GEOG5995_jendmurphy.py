@@ -4,7 +4,6 @@ Created on Tue Sep 19 10:24:31 2017
 AGENT BASED MODELLING PRACTICAL
 @author:Jen Murphy
 """
-import random
 import matplotlib.pyplot
 import operator
 import agentframework
@@ -42,16 +41,26 @@ for j in range(num_of_agents):
         distances.append (distance_between(agents[j],agents[i]))
 
 len(distances)
+print(distances)
+print(max(distances))
+print(min(distances))
+
+print(str(agents[0]))
 
 
+"""
+#trying to get some of the extra challenges done
+import operator    # Do this line at the top of the code.
+print(max(agents, key=operator.itemgetter(1)))    # Do this line at the bottom. 
 
 
 """
 """
+
 
 #agent0 and agent1 take the input agents[i] where i is the position in the 
 #list of the agent of interest
-"""
+
 
 a = agentframework.Agent()
 print (a.x, a.y)
