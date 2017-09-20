@@ -3,8 +3,96 @@
 Created on Tue Sep 19 10:24:31 2017
 AGENT BASED MODELLING PRACTICAL
 @author:Jen Murphy
+"""
+
+import random
+import operator
+import matplotlib.pyplot
+
+"""distance_between returns the pythagorean distance between two given agents
+
+agent0 and agent1 take the input agents[i] where i is the position in the 
+list of the agent of interest"""
+
+def distance_between(agent0, agent1):
+    return (((agent0[0]-agent1[0])**2)+((agent0[1]-agent1[1])**2))**0.5
+
+#Set up list of agents, set up number of agents and number of movements
+num_of_agents = 10
+num_of_iterations = 100
+agents = []
+distances = []
+
+#To time the running of the distance code
+import datetime
+def getTimeMS():
+     dt = datetime.datetime.now()
+     return dt.microsecond + (dt.second * 1000000) + \
+     (dt.minute * 1000000 * 60) + (dt.hour * 1000000 * 60 * 60)
+
+start = getTimeMS()
+
+#Make i agents, append coordinates to a list
+for i in range(num_of_agents):
+    agents.append([random.randint(0,100),random.randint(0,100)])
+
+#Move agents j times, based on random.random()
+for j in range (num_of_iterations):
+    for i in range(num_of_agents):
+        
+        if random.random()<0.5:
+            agents[i][0] = (agents[i][0] +1) %99
+        else:    
+            agents[i][0] = (agents[i][0] -1) %99
+            
+        if random.random()<0.5:
+            agents[i][1] = (agents[i][1] +1) %99
+        else:    
+            agents[i][1] = (agents[i][1] -1) %99
+
+#Compare all agents with each other and compute distance.
+for j in range(num_of_agents):
+    for i in range (num_of_agents):
+        distance_between(agents[j],agents[i])    
+        distances.append (distance_between(agents[j],agents[i]))
+
+end = getTimeMS()
+print("time = " + str(end - start))
+
+
+print (distances)        
+len(distances)
+
+matplotlib.pyplot.xlim(0, 99)
+matplotlib.pyplot.ylim(0, 99)
+for i in range(num_of_agents):
+     matplotlib.pyplot.scatter(agents[i][0],agents[i][1])
+matplotlib.pyplot.show() 
+
+
+"""The code here compares all agents with all other agents and constructs a list of lists distances
+
+for j in range(num_of_agents):
+    row = []
+    for i in range (num_of_agents):
+        distance_between(agents[j],agents[i])    
+        row.append (distance_between(agents[j],agents[i]))
+    distances.append(row)
+
+#set aside for now
+"""
 
 """
+
+#Define some functions and code for testing
+agents.append([0,0])#set up two agents who we KNOW are 5 apart for testing
+agents.append([3,4])#set up two agents who we KNOW are 5 apart for testing
+print(agents)
+
+# Work out the distance between agent 0 and agent 1
+distance = (((agents[0][0]-agents[1][0])**2)+((agents[0][1]-agents[1][1])**2))**0.5
+
+
 # import random
 import random
 import operator
@@ -57,7 +145,7 @@ for i in range (num_of_agents):
 matplotlib.pyplot.show()
 
 """
-INvestigating Boundary Issues
+#INvestigating Boundary Issues
 """
 # blur ---------------------------------------
 import matplotlib.pyplot
@@ -91,7 +179,7 @@ matplotlib.pyplot.imshow(processed_data)
 matplotlib.pyplot.show()
 
 
-"""
+
 PRACTICAL 2 CODE NOW COMMENTED OUT
 
 
