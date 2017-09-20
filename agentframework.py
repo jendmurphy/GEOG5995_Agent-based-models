@@ -8,13 +8,23 @@ CREATE A CLASS OF OBJECTS IN A FRAMEWORK
 """
 import random
 
-class agent:
-    def __init__ (self,x,y):
-         self.x = None
-         self.y = None  
-    def randomise(self):
-        self.x = (random.randint(0,100))
-        self.y = (random.randint(0,100)) 
+class Agent():
+    def __init__(self):
+        
+        self.x = random.randint(0,100)
+        self.y = random.randint(0,100)     
+        
+    def move(self):
+        if random.random() < 0.5:
+             self.x = (self.x + 1) % 99
+        else:
+             self.x = (self.x - 1) % 99
+             
+        if random.random() < 0.5:
+             self.y = (self.y + 1) % 99
+        else:
+             self.y = (self.y - 1) % 99
+
 
 
 """ 
@@ -35,5 +45,11 @@ class agent:
              agents[i][1] = (agents[i][1] + 1) % 99
          else:
              agents[i][1] = (agents[i][1] - 1) % 99
+
+def randomise(self):
+        self.x = (random.randint(0,100))
+        self.y = (random.randint(0,100)) 
+        
+
              
 """
