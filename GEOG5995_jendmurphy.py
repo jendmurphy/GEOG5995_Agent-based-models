@@ -31,6 +31,8 @@ matplotlib.pyplot.show()
 
 # Now to optimise the random movement code and set up another set of agents.
 # To get x coordinates for agent i
+agents = []
+
 for i in range(num_of_agents):
     agents [i][0] = random.random()
     agents [i][1] = random.random()
@@ -119,16 +121,18 @@ cases here
 """
 """
 print(max(agents))
-
+"""
 """
 operator.itemgetter looks at item 1 in each pair in the list - remember that 
 numbering starts at zero so this is the y coordinate.  Now we see the maximum
 y coordinate
 """
+"""
 print(max(agents, key=operator.itemgetter(1)))
-
+"""
 """
 Then plot the agent locations using a library package which plots
+"""
 """
 matplotlib.pyplot.xlim(0, 99)
 matplotlib.pyplot.ylim(0, 99)
@@ -223,5 +227,4 @@ xj = 0
 yj = 0
 distance_ij = (((xi-xj)**2)+((yi-yj)**2))**0.5
 print (distance_ij)
-"""
 """
