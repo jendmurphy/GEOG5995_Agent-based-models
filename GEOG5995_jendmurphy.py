@@ -37,8 +37,14 @@ matplotlib.pyplot.show()
 #Compare all agents with each other and compute distance.
 for j in range(num_of_agents):
     for i in range (num_of_agents):
-        distance_between(agents[j],agents[i])    
-        distances.append (distance_between(agents[j],agents[i]))
+            distance_between(agents[j],agents[i])    
+            distances.append (distance_between(agents[j],agents[i]))
+
+#Range will take up to 3 arguments, first one should be start of loop.
+for j in range(num_of_agents):
+    for i in range (j+1,num_of_agents):
+            distance_between(agents[j],agents[i])    
+            distances.append (distance_between(agents[j],agents[i]))
 
 len(distances)
 print(distances)
