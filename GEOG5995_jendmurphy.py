@@ -7,6 +7,26 @@ AGENT BASED MODELLING PRACTICAL
 import matplotlib.pyplot
 import operator
 import agentframework
+import csv
+
+f = open('in.txt', newline='') 
+reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
+
+environment = []
+
+for row in reader:				# A list of rows
+    rowlist = [] 
+    for value in row:				# A list of value
+        rowlist.append(value)
+    environment.append(rowlist)
+f.close() 	# Don't close until you are done with the reader;
+		# the data is read on request.
+
+      
+print(rowlist) 				# Floats
+
+matplotlib.pyplot.imshow(environment)
+matplotlib.pyplot.show() 
 
 # function distance_between returns the pythagorean distance between two given agents
 def distance_between(agent0, agent1):
@@ -17,6 +37,7 @@ num_of_agents = 10
 num_of_iterations = 100
 agents = []
 distances = []
+
 
 #Make i agents, append coordinates to a list
 for i in range(num_of_agents):
