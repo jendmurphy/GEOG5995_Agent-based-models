@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Sep 20 14:55:33 2017
-
 @author: Jen Murphy
-
 CREATE A CLASS OF OBJECTS IN A FRAMEWORK
 """
 import random
 
 class Agent():
-    def __init__(self,environment):
+    def __init__(self,environment,agents):
         self.environment = environment
+        self.agents = agents 
         self.store = 0  
         self.x = random.randint(0,300)
-        self.y = random.randint(0,300)     
- 
+        self.y = random.randint(0,300)
+       
     def move(self):
         if random.random() < 0.5:
              self.x = (self.x + 1) % 299
@@ -42,6 +41,27 @@ class Agent():
     def __str__(self):
         return (str(self.x) + "," + str(self.y) + " stores " + str(self.store))
 
+    def distance(self,a):
+             return (((self.x-a.x)**2)+((self.y-a.y)**2))**0.5  
+
+    def share(self, neighbourhood):
+            for a in self.agents:
+                if self.distance(a) <= neighbourhood:   
+                    shared_store = (self.store + a.store)*0.5
+                    self.store = a.store = shared_store
+ 
+# Loop through the agents in self.agents .
+# Calculate the distance between self and the current other agent:     distance = self.distance_between(agent)               
+# If distance is less than or equal to the neighbourhood         
+# Sum self.store and agent.store         
+# Divide sum by two to calculate average.         
+# self.store = average             
+# agent.store = average     
+# End if 
+# End loop 
+
+# for agent in range (num_of_agents)
+ #           self.agent = [agent[i]]
 
 
 """ 

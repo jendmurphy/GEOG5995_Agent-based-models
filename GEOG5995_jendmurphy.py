@@ -9,6 +9,11 @@ import operator
 import agentframework
 import csv
 
+#set up the 
+num_of_agents = 10
+num_of_iterations = 100000
+neighbourhood = 20
+
 f = open('in.txt', newline='') 
 reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
 
@@ -23,30 +28,25 @@ for row in reader:				# A list of rows
     environment.append(rowlist)
 f.close() 
 
+#plot environment
 matplotlib.pyplot.imshow(environment)
 matplotlib.pyplot.show()
 
-# function distance_between returns the pythagorean distance between two given agents
-def distance_between(agent0, agent1):
-    return (((agent0.x-agent1.x)**2)+((agent0.y-agent1.y)**2))**0.5
-
-#Set up list of agents, set up number of agents and number of movements
-num_of_agents = 10
-num_of_iterations = 100
+#Set up list of agents
 agents = []
-distances = []
 
 #Make i agents, append coordinates to a list
 for i in range(num_of_agents):
-    agents.append(agentframework.Agent(environment))
+    agents.append(agentframework.Agent(environment,agents))
 
 #Move the agents j times
 for j in range (num_of_iterations):
     for i in range(num_of_agents):
         agents[i].move()
         agents[i].eat()
-        agents[i].sick()
-        agents.append(agents[i].store)
+        agents[i].share(neighbourhood)
+#        agents[i].sick()       
+        
 
 for i in range (num_of_agents):
     print(agents[1].store)
@@ -74,16 +74,19 @@ f2.close()
 
 
 
-"""
 
 """
-
+# function distance_between returns the pythagorean distance between two given agents
+def distance_between(agent0, agent1):
+    return (((agent0.x-agent1.x)**2)+((agent0.y-agent1.y)**2))**0.5
+distances = []
 
 #Compare all agents with each other and compute distance.
 #for j in range(num_of_agents):
  #   for i in range (num_of_agents):
   #          distance_between(agents[j],agents[i])    
    #         distances.append (distance_between(agents[j],agents[i]))
+"""
 """
 #Range will take up to 3 arguments, first one should be start of loop.
 for j in range(num_of_agents):
