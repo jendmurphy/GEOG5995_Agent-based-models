@@ -8,10 +8,30 @@ import matplotlib.pyplot
 import operator
 import agentframework
 import csv
+import random
+import sys
 
-#set up the 
-num_of_agents = 10
-num_of_iterations = 100000
+# Creat a function to randomise the lists, code found via Stack Overflow -credit Ned Batchelder 
+def randomly(seq):
+    shuffled = list(seq)
+    random.shuffle(shuffled)
+    return iter(shuffled)
+
+#OR alternative is to use a function called permutation from numpy...
+#import numpy
+#from numpy.random import permutation
+#for i in permutation(1000):
+    # do something with i
+
+#set up the numbners by running from command line.  argv[1] is num agents, next is num iterations.
+if len(sys.argv) < 1:
+    num_of_agents = 10
+else: num_of_agents = int(sys.argv[1])
+
+if len(sys.argv) < 1:
+    num_of_iterations = 100 
+else: num_of_iterations = int(sys.argv[2])
+
 neighbourhood = 20
 
 f = open('in.txt', newline='') 
@@ -40,8 +60,8 @@ for i in range(num_of_agents):
     agents.append(agentframework.Agent(environment,agents))
 
 #Move the agents j times
-for j in range (num_of_iterations):
-    for i in range(num_of_agents):
+for j in randomly(range (num_of_iterations)):
+    for i in randomly(range(num_of_agents)):
         agents[i].move()
         agents[i].eat()
         agents[i].share(neighbourhood)
