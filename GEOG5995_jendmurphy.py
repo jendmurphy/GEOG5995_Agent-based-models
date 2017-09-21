@@ -12,21 +12,19 @@ import csv
 f = open('in.txt', newline='') 
 reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
 
+# set up a list
 environment = []
 
+#This code reads in the csv file and sorts it into rows
 for row in reader:				# A list of rows
     rowlist = [] 
     for value in row:				# A list of value
         rowlist.append(value)
     environment.append(rowlist)
-f.close() 	# Don't close until you are done with the reader;
-		# the data is read on request.
-
-      
-print(rowlist) 				# Floats
+f.close() 
 
 matplotlib.pyplot.imshow(environment)
-matplotlib.pyplot.show() 
+matplotlib.pyplot.show()
 
 # function distance_between returns the pythagorean distance between two given agents
 def distance_between(agent0, agent1):
@@ -41,39 +39,43 @@ distances = []
 
 #Make i agents, append coordinates to a list
 for i in range(num_of_agents):
-    agents.append(agentframework.Agent())
+    agents.append(agentframework.Agent(environment))
 
 #Move the agents j times
 for j in range (num_of_iterations):
     for i in range(num_of_agents):
         agents[i].move()
+        agents[i].eat()
 
 #Plot the position of agents
 matplotlib.pyplot.xlim(0, 99)
 matplotlib.pyplot.ylim(0, 99)
+matplotlib.pyplot.imshow(environment)
 for i in range(num_of_agents):
      matplotlib.pyplot.scatter(agents[i].x, agents[i].y)
 matplotlib.pyplot.show() 
+
+
 
 #Compare all agents with each other and compute distance.
 #for j in range(num_of_agents):
  #   for i in range (num_of_agents):
   #          distance_between(agents[j],agents[i])    
    #         distances.append (distance_between(agents[j],agents[i]))
-
+"""
 #Range will take up to 3 arguments, first one should be start of loop.
 for j in range(num_of_agents):
     for i in range (j+1,num_of_agents):
             distance_between(agents[j],agents[i])    
             distances.append (distance_between(agents[j],agents[i]))
             print("Distance between agent {0} and {1} is {2}".format(j,i,distance_between(agents[j],agents[i])))
+"""
+#len(distances)
+#print(distances)
+#print(max(distances))
+#print(min(distances))
 
-len(distances)
-print(distances)
-print(max(distances))
-print(min(distances))
-
-print(str(agents[0]))
+#print(str(agents[0]))
 
 
 """
