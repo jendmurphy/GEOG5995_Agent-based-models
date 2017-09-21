@@ -36,7 +36,6 @@ num_of_iterations = 100
 agents = []
 distances = []
 
-
 #Make i agents, append coordinates to a list
 for i in range(num_of_agents):
     agents.append(agentframework.Agent(environment))
@@ -46,15 +45,38 @@ for j in range (num_of_iterations):
     for i in range(num_of_agents):
         agents[i].move()
         agents[i].eat()
+        agents[i].sick()
+        agents.append(agents[i].store)
+
+for i in range (num_of_agents):
+    print(agents[1].store)
 
 #Plot the position of agents
-matplotlib.pyplot.xlim(0, 99)
-matplotlib.pyplot.ylim(0, 99)
+matplotlib.pyplot.xlim(0, 300)
+matplotlib.pyplot.ylim(0, 300)
 matplotlib.pyplot.imshow(environment)
 for i in range(num_of_agents):
      matplotlib.pyplot.scatter(agents[i].x, agents[i].y)
 matplotlib.pyplot.show() 
 
+# ___str___ has been modifid to show positions and stores
+for i in range (num_of_agents):
+    print(agents[i])
+    
+
+
+# This writes the environment as is now, to a new CSV file
+f2 = open('dataout.csv', 'w', newline='') 
+writer = csv.writer(f2, delimiter=' ')
+for row in environment:
+    writer.writerow(row)
+f2.close()
+
+
+
+"""
+
+"""
 
 
 #Compare all agents with each other and compute distance.

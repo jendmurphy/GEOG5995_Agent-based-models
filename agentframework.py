@@ -12,31 +12,44 @@ class Agent():
     def __init__(self,environment):
         self.environment = environment
         self.store = 0  
-        self.x = random.randint(0,100)
-        self.y = random.randint(0,100)     
+        self.x = random.randint(0,300)
+        self.y = random.randint(0,300)     
  
     def move(self):
         if random.random() < 0.5:
-             self.x = (self.x + 1) % 99
+             self.x = (self.x + 1) % 299
         else:
-             self.x = (self.x - 1) % 99
+             self.x = (self.x - 1) % 299
              
         if random.random() < 0.5:
-             self.y = (self.y + 1) % 99
+             self.y = (self.y + 1) % 299
         else:
-             self.y = (self.y - 1) % 99
+             self.y = (self.y - 1) % 299
 
-    def eat(self): # can you make it eat what is left?
+    def eat(self): # make the agents really hungry 
          if self.environment[self.y][self.x] > 10:
             self.environment[self.y][self.x] -= 10
-            self.store += 10 
-
+            self.store += 10       
+         else:
+            self.store += self.environment[self.y][self.x]
+            self.environment[self.y][self.x] = self.environment[self.y][self.x]-self.environment[self.y][self.x]
+    
+    def sick(self):
+        if self.store >= 1000:            
+            self.environment[self.y][self.x] +=1000
+            self.store = self.store-1000
+    
     def __str__(self):
-        return (str(self.x) + " " + str(self.y))
+        return (str(self.x) + "," + str(self.y) + " stores " + str(self.store))
 
 
 
 """ 
+
+    def __str__(self):
+        return ("Location "str(self.x) + "," + str(self.y) + ", stores " + str(self.store) + ".")
+
+
 # Make the agents.
  for i in range(num_of_agents):
      agents.append([random.randint(0,100),random.randint(0,100)])
