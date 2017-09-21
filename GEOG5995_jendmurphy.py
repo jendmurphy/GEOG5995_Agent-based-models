@@ -47,7 +47,6 @@ for j in range (num_of_iterations):
         agents[i].share(neighbourhood)
 #        agents[i].sick()       
         
-
 for i in range (num_of_agents):
     print(agents[1].store)
 
