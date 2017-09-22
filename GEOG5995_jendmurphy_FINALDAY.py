@@ -24,15 +24,18 @@ def randomly(seq):
     # do something with i
 
 #set up the numbners by running from command line.  argv[1] is num agents, next is num iterations.
-if len(sys.argv) < 1:
-    num_of_agents = 10
-else: num_of_agents = int(sys.argv[1])
+#if len(sys.argv) < 1:
+ #   num_of_agents = 10
+#else: num_of_agents = int(sys.argv[1])
 
-if len(sys.argv) < 1:
-    num_of_iterations = 100 
-else: num_of_iterations = int(sys.argv[2])
+#if len(sys.argv) < 1:
+ #   num_of_iterations = 100 
+#else: num_of_iterations = int(sys.argv[2])
 
+#Define fixed variables
 neighbourhood = 20
+num_of_agents = 10
+num_of_iterations = 100 
 
 f = open('in.txt', newline='') 
 reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
@@ -49,24 +52,38 @@ for row in reader:				# A list of rows
 f.close() 
 
 #plot environment
-matplotlib.pyplot.imshow(environment)
-matplotlib.pyplot.show()
+#matplotlib.pyplot.imshow(environment)
+#matplotlib.pyplot.show()
 
 #Set up list of agents
 agents = []
+
+#Define the variable fig - one snapshot of the agents
+fig = matplotlib.pyplot.figure(figsize=(7,7))
+#define the variable axes
+ax = fig.add_axes([0,0,1,1])
 
 #Make i agents, append coordinates to a list
 for i in range(num_of_agents):
     agents.append(agentframework.Agent(environment,agents))
 
-#Move the agents j times
-for j in randomly(range (num_of_iterations)):
+def update(frame_number):
+    fig.clear()
+    #Move the agents j times
+    #for j in randomly(range (num_of_iterations)):
     for i in randomly(range(num_of_agents)):
         agents[i].move()
         agents[i].eat()
         agents[i].share(neighbourhood)
-#        agents[i].sick()       
+#           agents[i].sick()       
+        matplotlib.pyplot.scatter(agents[i].x, agents[i].y)
+        matplotlib.pyplot.imshow(environment)
         
+animation=matplotlib.animation.FuncAnimation(fig, update, interval=1)
+fig.show()
+
+"""
+       
 for i in range (num_of_agents):
     print(agents[1].store)
 
@@ -91,7 +108,7 @@ for row in environment:
     writer.writerow(row)
 f2.close()
 
-
+"""
 
 
 """
