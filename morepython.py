@@ -21,3 +21,19 @@ def add(num1,num2):
     return num1 + num2
 answer = add(num2 = 3, num1 = 5)
 print (answer)
+
+
+a = 0            # FIRST, set the initial value of the variable a to 0(zero).
+while a < 10:    # While the value of the variable a is less than 10 do the following:
+    a = a + 1    # Increase the value of the variable a by 1, as in: a = a + 1! 
+    print(a)
+
+a = 1
+s = 0
+print('Enter Numbers to add to the sum.')
+print('Enter 0 to quit.')
+while a != 0:                           
+    print('Current Sum:', s)            
+    a = float(input('Number? '))        
+    s = s + a                            
+print('Total Sum =', s)
