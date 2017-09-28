@@ -24,13 +24,13 @@ def randomly(seq):
     # do something with i
 
 #set up the numbners by running from command line.  argv[1] is num agents, next is num iterations.
-if len(sys.argv) < 1:
-    num_of_agents = 10
-else: num_of_agents = int(sys.argv[1])
+#if len(sys.argv) < 1:
+num_of_agents = 10
+#else: num_of_agents = int(sys.argv[1])
 
-if len(sys.argv) < 1:
-    num_of_iterations = 100 
-else: num_of_iterations = int(sys.argv[2])
+#if len(sys.argv) < 1:
+num_of_iterations = 100 
+#else: num_of_iterations = int(sys.argv[2])
 
 neighbourhood = 20
 
