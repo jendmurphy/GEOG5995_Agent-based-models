@@ -4,6 +4,9 @@ GEOG5995:  Introduction to Agent Based Models in Python
 Core module for Data Analytics and Society integrated PhD
 
 @author:Jen Murphy
+
+Code developed from practicals designed and delivered by Andy Evans, Leeds Institute for Data Analytics.
+http://www.geog.leeds.ac.uk/courses/computing/study/core-python-phd/
 """
 import random
 
@@ -18,7 +21,9 @@ class Agent():
 
 #  Agents move within the environment.  Coordinates are updated based on a 
 #  random number, moving +/- 1 for each iteration.
-#  %creates a boundary so that agents remain within the defined environment
+#  % is a torus boundary solution so that agents remain within the defined environment
+#  TORUS boundary solution - allow agents leaving the top of an area to come in
+#  at the bottom, and leaving left, come in on the right. 
     def move(self):
         if random.random() < 0.5:
              self.x = (self.x + 1) % 300
@@ -29,6 +34,7 @@ class Agent():
              self.y = (self.y + 1) % 300
         else:
              self.y = (self.y - 1) % 300
+
 #  Agents reduce the number at their location in the environment by 10 every 
 #  time they move.  NUmbers relate to the colour of the enviroment when plotted
 #  so this can be seen as a gradual change in colour with more iterations.
