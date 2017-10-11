@@ -68,19 +68,10 @@ ax = fig.add_axes([0,0,1,1])
 for i in range(num_of_agents):
     agents.append(agentframework.Agent(environment,agents))
     
-#To time the code being run
-import datetime
-def getTimeMS():
-     dt = datetime.datetime.now()
-     return dt.microsecond + (dt.second * 1000000) + \
-     (dt.minute * 1000000 * 60) + (dt.hour * 1000000 * 60 * 60)
-
-start = getTimeMS() # starts timer
 
 
 #  To set up animation
 def update(frame_number):
-    
     fig.clear()   
 
 #  Move the agents j times, and plot the agent locations.
@@ -97,53 +88,47 @@ def update(frame_number):
     for i in range(num_of_agents):    
         matplotlib.pyplot.scatter(agents[i].x, agents[i].y)
         matplotlib.pyplot.imshow(environment)
-    
 
+#  Animate
 animation = matplotlib.animation.FuncAnimation(fig, update, interval=1)
 fig.show()
 
+#  To write the altered environment file to a new .csv
+f2 = open('dataout.csv', 'w', newline='') 
+writer = csv.writer(f2, delimiter=' ')
+for row in environment:
+    writer.writerow(row)
+f2.close()
 
 #  Agentframework has modified  ___str___ 
 #  Prints a list of all i agents, coordinates and stores
 for i in range (num_of_agents):
     print(agents[i])
 
+"""
+END OF CODE
+"""
+    
+
+"""
+SUPPLEMENTARY CODE RETAINED FOR LEARNING PURPOSES
+
+#To time the code being run
+import datetime
+def getTimeMS():
+     dt = datetime.datetime.now()
+     return dt.microsecond + (dt.second * 1000000) + \
+     (dt.minute * 1000000 * 60) + (dt.hour * 1000000 * 60 * 60)
+
+start = getTimeMS() # starts timer
+
+#code to be timed here
+    
 # Stop timer and print the time taken
 end = getTimeMS()
 print("time = " + str(end - start))
 
 
-"""
-
-#For animating - still not working..
-#Define the variable fig - one snapshot of the agents
-fig = matplotlib.pyplot.figure(figsize=(7,7))
-#define the variable axes
-ax = fig.add_axes([0,0,1,1])
-
-#Make i agents, append coordinates to a list
-for i in range(num_of_agents):
-    agents.append(agentframework.Agent(environment,agents))
-
-def update(frame_number):
-    fig.clear()
-    #Move the agents j times
-    #for j in randomly(range (num_of_iterations)):
-    for i in randomly(range(num_of_agents)):
-        agents[i].move()
-        agents[i].eat()
-        agents[i].share(neighbourhood)
-#           agents[i].sick()       
-        matplotlib.pyplot.scatter(agents[i].x, agents[i].y)
-        matplotlib.pyplot.imshow(environment)
-        
-animation=matplotlib.animation.FuncAnimation(fig, update, interval=1)
-fig.show()
-"""
-
-
-"""
-SUPPLEMENTARY CODE
 
 CALCULATING DISTANCES BETWEEN AGENTS - AND TESTING
 
@@ -179,16 +164,6 @@ agents = []
 agents.append([0,0])#set up two agents, known distance apart = 5
 agents.append([3,4])#set up two agents, known distance apart = 5
 print(agents)
-
-
-WRITING TO A NEW FILE
-
-#  To write the altered environment file to a new .csv
-f2 = open('dataout.csv', 'w', newline='') 
-writer = csv.writer(f2, delimiter=' ')
-for row in environment:
-    writer.writerow(row)
-f2.close()
 
 
 
