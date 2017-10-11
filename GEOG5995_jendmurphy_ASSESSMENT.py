@@ -16,23 +16,14 @@ import csv
 import random
 import sys
 
-#Define fixed variables
+#Define model parameters
 neighbourhood = 100
-#num_of_agents = 10
-#num_of_iterations = 100
-
-#set up the numbers by running from command line.  argv[1] is num agents, next is num iterations.
-#if len(sys.argv) < 1:
 num_of_agents = 10
-#else: num_of_agents = int(sys.argv[1])
-
-#if len(sys.argv) < 1:
 num_of_iterations = 100 
-#else: num_of_iterations = int(sys.argv[2])
 
 #Set up required lists
 environment = [] # a list of rows of values - a 2D array defined by in.txt
-agents = [] # a list of agentsm defined by agentframework.py
+agents = [] # a list of agents defined by agentframework.py
 
 #Define function to randomise lists, code sourced from Stack Overflow
 #Ref https://stackoverflow.com/a/9253366/8689056
@@ -45,7 +36,7 @@ def randomly(a):
 f = open('in.txt', newline='') 
 reader = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
 
-#Sort csv file into rows
+#Sort environment csv file into rows
 for row in reader:				
     rowlist = [] 
     for value in row:				
